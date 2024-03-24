@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Xml.Serialization;
 using TMPro;
@@ -97,18 +98,22 @@ public class Ball : MonoBehaviour
 
     private static void ResetGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (GameObject.FindGameObjectWithTag("Ball").GetComponent<Ball>().Point == 10)
+        {
+            SceneManager.LoadScene("Menu");
+        }
+        else SceneManager.LoadScene("BowlingGame");
     }
 
     private void GenerateFeedBack()
     {
         feedBack.text = Point switch
         {
-            0 => "Nothing!",
-            > 0 and < 3 => "You are learning Now!",
-            >= 3 and < 6 => "It was close!",
-            >= 6 and < 10 => "It was nice!",
-            _ => "Perfect! You are a master!"
+            0 => "You must try harder!",
+            > 0 and < 3 => "Almost good!",
+            >= 3 and < 6 => "You did well!",
+            >= 6 and < 10 => "You are amazing!",
+            _ => "Perfect you are an expert!"
         };
 
         feedBack.GetComponent<Animator>().SetTrigger("Show");
