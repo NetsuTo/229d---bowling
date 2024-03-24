@@ -113,7 +113,7 @@ public class Ball : MonoBehaviour
             > 0 and < 3 => "Almost good!",
             >= 3 and < 6 => "You did well!",
             >= 6 and < 10 => "You are amazing!",
-            _ => "Perfect you are an expert!"
+            _ => "Perfect !!!You Strike!!!"
         };
 
         feedBack.GetComponent<Animator>().SetTrigger("Show");
